@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite for onliner test">
+    <test name="Onliner cucumber test">
+        <classes>
+            <class name="onliner.test.TestRunner"/>
+        </classes>
+    </test>
+</suite>
