@@ -27,7 +27,7 @@ public class Steps extends BaseTest{
         finish();
     }
 
-    @Given("^I'm not signed in user on the main page and navigate to the Catalogue page$")
+    @Given("^I'm on the main page and navigate to the Catalogue page$")
     public void navigateToCatalogPage() {
         mainPage.checkPage();
         mainPage.getMainMenu().selectMainNavigationOption("Каталог");

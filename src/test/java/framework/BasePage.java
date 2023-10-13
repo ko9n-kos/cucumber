@@ -4,7 +4,7 @@ import framework.elements.BaseElement;
 
 import org.testng.asserts.SoftAssert;
 
-import static framework.Browser.waitForPageToLoad;
+import static framework.Browser.waitForPageLoad;
 
 public class BasePage {
     protected SoftAssert softAssert = new SoftAssert();
@@ -16,7 +16,7 @@ public class BasePage {
 
     public void checkPage() {
         baseElement.waitVisibilityOfElement();
-        waitForPageToLoad();
+        waitForPageLoad();
     }
 
 }

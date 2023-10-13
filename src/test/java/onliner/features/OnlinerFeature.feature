@@ -1,8 +1,8 @@
-Feature: Onliner products search test
+Feature: Test of the product search
 
-  Scenario Outline: I search products by parameters
+  Scenario Outline: I find tv by parameters
 
-    Given I'm not signed in user on the main page and navigate to the Catalogue page
+    Given I'm on the main page and navigate to the Catalogue page
     When I click on the catalog menu option 'Электроника', electronic aside list 'Телевидение и видео' and select 'Телевизоры'
     And I select manufacturer as <brand>
     And I set max price as <priceMax>

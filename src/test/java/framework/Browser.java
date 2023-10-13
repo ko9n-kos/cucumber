@@ -41,7 +41,7 @@ public class Browser extends DriverFactory {
         driver.quit();
     }
 
-    public static void waitForPageToLoad() {
+    public static void waitForPageLoad() {
         try {
             wait.until((ExpectedCondition<Boolean>) d -> {
                 if (!(d instanceof JavascriptExecutor)) {
