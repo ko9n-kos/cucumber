@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -68,7 +69,23 @@ public class BaseElement {
         js.executeScript("arguments[0].click();", findElement());
     }
 
+    public void moveAndClick(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(findElement());
+        actions.perform();
+        findElement().click();
+    }
+
     public void click() {
         waitElementToBeClickable().click();
+    }
+
+    public static String nbspReplacement(String option) {
+        if (option.contains("и")) {
+            String stringReverse = String.valueOf(new StringBuffer(option).reverse()).replaceFirst(" "," ");
+            option= String.valueOf(new StringBuffer(stringReverse).reverse());
+            return option;
+        }
+        return option;
     }
 }

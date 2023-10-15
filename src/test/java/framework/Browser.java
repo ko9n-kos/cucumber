@@ -2,22 +2,26 @@ package framework;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static framework.DriverFactory.browserSetUp;
 import static framework.PropertyReader.getProperties;
 
-public class Browser extends DriverFactory {
-
+public class Browser {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
     public void getInstance() throws IOException {
         driver = browserSetUp();
+        timeout();
     }
 
     public void setUpWait() throws IOException {

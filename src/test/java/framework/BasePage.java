@@ -18,5 +18,4 @@ public class BasePage {
         baseElement.waitVisibilityOfElement();
         waitForPageLoad();
     }
-
 }

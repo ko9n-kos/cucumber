@@ -5,21 +5,24 @@ import org.testng.annotations.BeforeTest;
 
 import java.io.*;
 
-public class BaseTest extends Browser {
 
+public class BaseTest {
     public static Browser browser = new Browser();
 
     @BeforeTest
     public static void setUp() throws IOException {
+        if(Browser.driver!=null)
+        {
+            browser.quitDriver();
+        }
         browser.getInstance();
         browser.setUpWait();
         browser.maximizeWindow();
-        browser.timeout();
         browser.getUrl();
     }
 
     @AfterTest
-    public static void finish() {
+    public static void tearDown() {
         browser.quitDriver();
     }
 }

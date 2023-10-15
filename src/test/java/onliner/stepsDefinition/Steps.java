@@ -1,6 +1,5 @@
 package onliner.stepsDefinition;
 
-import framework.BaseTest;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -13,7 +12,11 @@ import onliner.pageObject.pages.TvPage;
 
 import java.io.IOException;
 
-public class Steps extends BaseTest{
+import static framework.BaseTest.setUp;
+import static framework.BaseTest.tearDown;
+
+
+public class Steps {
     MainPage mainPage = new MainPage();
     CatalogPage catalogPage = new CatalogPage();
     TvPage tvPage = new TvPage();
@@ -23,22 +26,22 @@ public class Steps extends BaseTest{
         setUp();
     }
     @After
-    public static void tearDown() {
-        finish();
+    public static void finish() {
+        tearDown();
     }
 
     @Given("^I'm on the main page and navigate to the Catalogue page$")
     public void navigateToCatalogPage() {
         mainPage.checkPage();
-        mainPage.getMainMenu().selectMainNavigationOption("Каталог");
+        mainPage.getHeader().selectMainNavigationOption("Каталог");
     }
 
     @When("^I click on the catalog menu option 'Электроника', electronic aside list 'Телевидение и видео' and select 'Телевизоры'$")
     public void navigateToTvsPage() {
         catalogPage.checkPage();
-        catalogPage.getCatalogMenu().selectCatalogListOption("Электроника");
-        catalogPage.getCatalogMenu().selectElectronicOption("Телевидение и видео");
-        catalogPage.getCatalogMenu().selectTvAndVideoOption("Телевизоры");
+        catalogPage.getCatalogMenu().selectCatalogMenuOption("Электроника");
+        catalogPage.getCatalogMenu().selectSubMenuOption("Телевидение и видео");
+        catalogPage.getCatalogMenu().selectAsideListOption("Телевизоры");
     }
 
     @And("^I select manufacturer as (.*)$")

@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.SessionId;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,10 +15,10 @@ import java.util.HashMap;
 import static framework.PropertyReader.getProperties;
 
 public class DriverFactory {
+    public static String browser;
+    public static SessionId session;
 
-    public String browser;
-
-    public WebDriver browserSetUp() throws IOException {
+    public static WebDriver browserSetUp() throws IOException {
         WebDriver driver = null;
         browser = getProperties("config.properties", "browser").toLowerCase();
 
@@ -30,6 +31,7 @@ public class DriverFactory {
                 options.setExperimentalOption("prefs", chromePrefs);
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(options);
+                session = ((ChromeDriver)driver).getSessionId();
                 break;
             case "firefox":
                 FirefoxProfile profile = new FirefoxProfile();
@@ -38,6 +40,7 @@ public class DriverFactory {
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver(firefoxOptions.setProfile(profile));
+                session = ((FirefoxDriver)driver).getSessionId();
                 break;
             default:
                 break;
