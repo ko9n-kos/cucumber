@@ -8,7 +8,7 @@ import static framework.Browser.waitForPageLoad;
 
 public class BasePage {
     protected SoftAssert softAssert = new SoftAssert();
-    public BaseElement baseElement;
+    protected BaseElement baseElement;
 
     public BasePage(BaseElement title) {
         baseElement = title;

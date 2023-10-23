@@ -7,7 +7,7 @@ import java.io.*;
 
 
 public class BaseTest {
-    public static Browser browser = new Browser();
+    protected static Browser browser = new Browser();
 
     @BeforeTest
     public static void setUp() throws IOException {

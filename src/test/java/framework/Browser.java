@@ -1,11 +1,15 @@
 package framework;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -14,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 import static framework.DriverFactory.browserSetUp;
 import static framework.PropertyReader.getProperties;
+import static io.qameta.allure.Allure.addAttachment;
 
 public class Browser {
     public static WebDriver driver;

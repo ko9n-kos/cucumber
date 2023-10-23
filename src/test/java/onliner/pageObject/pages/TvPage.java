@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class TvPage extends CatalogBasePage {
-    protected static String manufacturer = "//span[contains(text(),'Производитель')]//parent::div/following-sibling::div//child::li//child::span[contains(text(), '%s')]";
+    protected static final Label lblViewAll = new Label(By.xpath("//span[contains(text(),'Производитель')]/parent::div//following-sibling::div//div/div[contains(text(),'Все')]"));
+    protected static String manufacturer = "//div[@class='schema-filter-popover__wrapper']//child::div//child::span[text()= '%s']";
     protected static final TextBox txtboxPrice = new TextBox(By.xpath("//div[@class='schema-filter__group']//child::input[@type='text' and contains(@placeholder, 'до')]"));
     protected static final DropDown drpDownDiagonalFrom = new DropDown(By.xpath("//div[@class='schema-filter__group']/child::div[1]/child::select"));
     protected static final DropDown drpDownDiagonalTo = new DropDown(By.xpath("//div[@class='schema-filter__group']/child::div[2]/child::select"));
@@ -25,8 +26,9 @@ public class TvPage extends CatalogBasePage {
 
     public void selectManufacturer(String option) {
         closeModal();
+        lblViewAll.clickViaJs();
         Checkbox checkboxManufacturer = new Checkbox(By.xpath(String.format(manufacturer, option)));
-        checkboxManufacturer.clickViaJs();
+        checkboxManufacturer.moveAndClick();
         checkboxManufacturer.isSelected();
     }
 
